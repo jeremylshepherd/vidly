@@ -1,0 +1,30 @@
+@model vidly.ViewModels.CustomersViewModel
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (Model.Customers?.Count < 1 || Model.Customers == null)
+{
+    <p>There are no customers yet.</p>
+}
+else
+{
+<table class="table">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr onclick="location.href = '@Url.Action("Details", "Customers", new { id = customer.Id })'">
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

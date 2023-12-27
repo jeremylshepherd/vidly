@@ -1,0 +1,16 @@
+@model vidly.ViewModels.MovieDetailsViewModel
+
+@{
+    ViewBag.Title = @Model.Movie?.Title ?? "Movie Not Found";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Movie == null)
+{
+    <p>That movie does not exist</p>
+}
+else
+{
+    <h2>@Model.Movie.Title</h2>
+    <p>@Model.Movie.Month, @Model.Movie.Year</p>
+}
